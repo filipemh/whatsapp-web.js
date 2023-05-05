@@ -838,6 +838,11 @@ class Client extends EventEmitter {
         return ContactFactory.create(this, contact);
     }
 
+    /** 
+     * Get message instance by ID
+     * @param {string} messageId
+     * @returns {Promise<Message>}
+     */
     async getMessageById(messageId) {
         const msg = await this.pupPage.evaluate(async messageId => {
             let msg = window.Store.Msg.get(messageId);
