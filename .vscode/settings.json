@@ -1,0 +1,8 @@
+{
+    "editor.wordWrapColumn": 160,
+    "diffEditor.wordWrap": "off",
+    "editor.rulers": [
+        160
+    ],
+    "editor.formatOnSave": false
+}
