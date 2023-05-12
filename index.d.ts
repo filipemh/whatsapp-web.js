@@ -832,6 +832,7 @@ declare namespace WAWebJS {
         fromMe: boolean,
         remote: string,
         id: string,
+        participant?: string;
         _serialized: string,
     }
 
