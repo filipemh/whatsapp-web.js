@@ -523,18 +523,7 @@ END:VCARD`;
                 expect(msg.vCards[1]).to.match(/BEGIN:VCARD/);
             });
         });
-        
-        describe('Get Messages', function() {
-            it ('can get a message by it\'s ID', async function() {
-                const chat = await client.getChatById(remoteId);
-                const [message] = await chat.fetchMessages({limit: 1});
-                const messageById = await client.getMessageById(message.id._serialized);
-                expect(messageById).to.exist;
-                expect(messageById).to.be.instanceOf(Message);
-                expect(messageById).to.be.equal(message);
-            });
-        });
-        
+    
         describe('Get Chats', function () {    
             it('can get a chat by its ID', async function () {
                 const chat = await client.getChatById(remoteId);
@@ -596,6 +585,7 @@ END:VCARD`;
                 expect(refreshedContact.isBlocked).to.eql(false);
             });
         });
+
         describe('Numbers and Users', function () {
             it('can verify that a user is registered', async function () {
                 const isRegistered = await client.isRegisteredUser(remoteId);

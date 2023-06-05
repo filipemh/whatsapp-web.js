@@ -368,6 +368,10 @@ declare namespace WAWebJS {
         puppeteer?: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions
 		/** Determines how to save and restore sessions. Will use LegacySessionAuth if options.session is set. Otherwise, NoAuth will be used. */
         authStrategy?: AuthStrategy,
+        /** The version of WhatsApp Web to use. Use options.webVersionCache to configure how the version is retrieved. */
+        webVersion?: string,
+        /**  Determines how to retrieve the WhatsApp Web version specified in options.webVersion. */
+        webVersionCache?: WebCacheOptions,
         /** How many times should the qrcode be refreshed before giving up
 		 * @default 0 (disabled) */
 		qrMaxRetries?: number,
@@ -390,8 +394,28 @@ declare namespace WAWebJS {
         userAgent?: string
         /** Ffmpeg path to use when formating videos to webp while sending stickers 
          * @default 'ffmpeg' */
-        ffmpegPath?: string
+        ffmpegPath?: string,
+        /** Object with proxy autentication requirements @default: undefined */
+        proxyAuthentication?: {username: string, password: string} | undefined
     }
+
+    export interface LocalWebCacheOptions {
+        type: 'local',
+        path?: string,
+        strict?: boolean
+    }
+
+    export interface RemoteWebCacheOptions {
+        type: 'remote',
+        remotePath: string,
+        strict?: boolean
+    }
+
+    export interface NoWebCacheOptions {
+        type: 'none'
+    }
+
+    export type WebCacheOptions = NoWebCacheOptions | LocalWebCacheOptions | RemoteWebCacheOptions;
 
     /**
      * Base class which all authentication strategies extend
