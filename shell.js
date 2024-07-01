@@ -10,10 +10,7 @@ const repl = require('repl');
 
 const { Client, LocalAuth } = require('./index');
 
-const client = new Client({
-    puppeteer: { headless: false }, 
-    authStrategy: new LocalAuth()
-});
+const client = new Client({puppeteer: {headless: false,executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',},authStrategy: new LocalAuth(),});
 
 console.log('Initializing...');
 
